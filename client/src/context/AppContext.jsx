@@ -21,7 +21,7 @@ export const AppContextProvider = ({ children}) => {
     }
 
     //Add Product to Cart
-    const addToCart = () => {
+    const addToCart = (itemId) => {
         let cartData = structuredClone(cartItems);
         if(cartData[itemId]){
             cartData[itemId] += 1;
@@ -59,7 +59,7 @@ export const AppContextProvider = ({ children}) => {
     const value = {
         // Add any global state or functions here
         navigate, user, setUser, seller, setSeller, showUserLogin, setShowUserLogin, 
-        products,setProducts, currency, addToCart, updateCartItem, removeFromCart
+        products,setProducts, currency, addToCart, updateCartItem, removeFromCart, cartItems
     }
     return (
         <AppContext.Provider value={value}>
