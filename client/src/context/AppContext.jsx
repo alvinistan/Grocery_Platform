@@ -13,7 +13,7 @@ export const AppContextProvider = ({ children}) => {
     const [seller, setSeller] = useState(false);
     const [showUserLogin, setShowUserLogin] = useState(false);
     const [products, setProducts] = useState([]);
-    const [cardItems, setCardItems] = useState({});
+    const [cartItems, setCartItems] = useState({});
 
     //Fetch products from backend (for now using dummy data)
     const fetchProduct = async () => {
@@ -22,25 +22,35 @@ export const AppContextProvider = ({ children}) => {
 
     //Add Product to Cart
     const addToCart = () => {
-        let cartData = structuredClone(cardItems);
+        let cartData = structuredClone(cartItems);
         if(cartData[itemId]){
             cartData[itemId] += 1;
         }else{
             cartData[itemId] = 1;
         }
-        setCardItems(cartData);
+        setCartItems(cartData);
         toast.success("Product added to cart!");
     }
 
     //Update cart item quantity
-    const updateCardItem = (itemId, quality)=>{
-        let cardData = structuredClone(cardItems);
-        cardData[itemId] = quality;
-        setCardItems(cardData);
+    const updateCartItem = (itemId, quality)=>{
+        let cartData = structuredClone(cartItems);
+        cartData[itemId] = quality;
+        setCartItems(cartData);
         toast.success("Cart updated!");
     }
 
-    
+    //Remove Product from Cart
+    const removeFromCart = (itemId) => {
+        let cartData = structuredClone(cartItems);
+        if(cartData[itemId]){
+            cartData[itemId] -= 1;
+        }if(cartData[itemId] === 0){
+            delete cartData[itemId];
+        }
+        setCartItems(cartData);
+        toast.success("Product removed from cart!");
+    } 
 
     useEffect(() => {
         fetchProduct();
@@ -49,7 +59,7 @@ export const AppContextProvider = ({ children}) => {
     const value = {
         // Add any global state or functions here
         navigate, user, setUser, seller, setSeller, showUserLogin, setShowUserLogin, 
-        products,setProducts, currency, addToCart, updateCardItem
+        products,setProducts, currency, addToCart, updateCartItem, removeFromCart
     }
     return (
         <AppContext.Provider value={value}>
