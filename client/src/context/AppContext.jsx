@@ -24,13 +24,23 @@ export const AppContextProvider = ({ children}) => {
     const addToCart = () => {
         let cartData = structuredClone(cardItems);
         if(cartData[itemId]){
-            cartData[itemId] = +1;
+            cartData[itemId] += 1;
         }else{
             cartData[itemId] = 1;
         }
         setCardItems(cartData);
         toast.success("Product added to cart!");
     }
+
+    //Update cart item quantity
+    const updateCardItem = (itemId, quality)=>{
+        let cardData = structuredClone(cardItems);
+        cardData[itemId] = quality;
+        setCardItems(cardData);
+        toast.success("Cart updated!");
+    }
+
+    
 
     useEffect(() => {
         fetchProduct();
@@ -39,7 +49,7 @@ export const AppContextProvider = ({ children}) => {
     const value = {
         // Add any global state or functions here
         navigate, user, setUser, seller, setSeller, showUserLogin, setShowUserLogin, 
-        products,setProducts, currency
+        products,setProducts, currency, addToCart, updateCardItem
     }
     return (
         <AppContext.Provider value={value}>
