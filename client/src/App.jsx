@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import { Routes, Route, useLocation } from "react-router-dom";
+import { Toster } from 'react-hot-toast'
 
 const App = () => {
 
@@ -10,6 +11,8 @@ const App = () => {
   return (
     <div>
       {isSellerPath ? null : <Navbar />}
+
+      <Toster position="top-right" reverseOrder={false} />
 
       <div className={`${isSellerPath ? " " : "px-6 md:px-12 lg:px-24 xl:px-32"}`}>
         <Routes>
