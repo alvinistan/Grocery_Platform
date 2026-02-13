@@ -10,7 +10,7 @@ const App = () => {
   return (
     <div>
       {isSellerPath ? null : <Navbar />}
-      
+
       <div className={`${isSellerPath ? " " : "px-6 md:px-12 lg:px-24 xl:px-32"}`}>
         <Routes>
           <Route path="/" element = {<Home />} />
