@@ -14,6 +14,7 @@ export const AppContextProvider = ({ children}) => {
     const [showUserLogin, setShowUserLogin] = useState(false);
     const [products, setProducts] = useState([]);
     const [cartItems, setCartItems] = useState({});
+    const [searchQuery, setSearchQuery] = useState({})
 
     //Fetch products from backend (for now using dummy data)
     const fetchProduct = async () => {
@@ -52,6 +53,7 @@ export const AppContextProvider = ({ children}) => {
         toast.success("Product removed from cart!");
     } 
 
+    
     useEffect(() => {
         fetchProduct();
     },[]);
@@ -60,6 +62,7 @@ export const AppContextProvider = ({ children}) => {
         // Add any global state or functions here
         navigate, user, setUser, seller, setSeller, showUserLogin, setShowUserLogin, 
         products,setProducts, currency, addToCart, updateCartItem, removeFromCart, cartItems
+        , searchQuery, setSearchQuery
     }
     return (
         <AppContext.Provider value={value}>
