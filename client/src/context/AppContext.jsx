@@ -53,6 +53,10 @@ export const AppContextProvider = ({ children}) => {
         toast.success("Product removed from cart!");
     } 
 
+    useEffect(() => {
+
+    },[cartItems])
+
     // Get Cart Item Count
     const getCartCount = () => {
         let totalCount = 0;
@@ -84,7 +88,7 @@ export const AppContextProvider = ({ children}) => {
         // Add any global state or functions here
         navigate, user, setUser, seller, setSeller, showUserLogin, setShowUserLogin, 
         products,setProducts, currency, addToCart, updateCartItem, removeFromCart, cartItems
-        , searchQuery, setSearchQuery
+        , searchQuery, setSearchQuery, getCartAmount, getCartCount
     }
     return (
         <AppContext.Provider value={value}>

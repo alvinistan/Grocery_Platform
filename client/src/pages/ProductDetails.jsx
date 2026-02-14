@@ -13,7 +13,7 @@ const ProductDetails = () => {
     const [relatedProducts, setRelatedProducts] = useState([]);
 
     const product = products.find((item) => item._id === id );
-    console.log(relatedProducts);
+    
 
     useEffect(()=> {
         if(product){

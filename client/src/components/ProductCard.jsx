@@ -7,7 +7,6 @@ const ProductCard = ({product}) => {
     const [count, setCount] = useState(0);
     const {currency, addToCart, removeFromCart, cartItems, navigate} = useAppContext();
 
-    console.log(product);
 
     return product && (
         
