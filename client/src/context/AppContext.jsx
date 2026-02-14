@@ -53,6 +53,15 @@ export const AppContextProvider = ({ children}) => {
         toast.success("Product removed from cart!");
     } 
 
+    // Get Cart Item Count
+    const getCartCount = () => {
+        let totalCount = 0;
+        for(const item in cartItems){
+            totalCount += cartItems[item];
+        }
+        return totalCount;
+    }
+
     
     useEffect(() => {
         fetchProduct();
